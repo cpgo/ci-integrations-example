@@ -1,0 +1,46 @@
+stages:
+  - test
+  - build
+
+variables:
+  DB_HOST: postgres
+  DB_PASS: postgres
+  DB_USER: postgres
+
+brakeman:
+  stage: test
+  image: circleci/ruby:2.4-node
+  before_script:
+    - bundle install
+  script:
+    - bundle exec brakeman
+
+rubocop:
+  stage: test
+  image: circleci/ruby:2.4-node
+  before_script:
+    - bundle install
+  script:
+    - bundle exec rubocop
+
+rspec:
+  stage: test
+  image: circleci/ruby:2.4-node
+  services:
+    - postgres:latest
+  before_script:
+    - bundle install
+    - rake db:create RAILS_ENV=test
+    - rake db:schema:load RAILS_ENV=test
+  script:
+    - bundle exec rspec
+
+build:
+  stage: build
+  only:
+    - master
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker build .
