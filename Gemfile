@@ -33,3 +33,5 @@ gem "brakeman", "~> 4.1"
 
 # Added at 2018-02-19 14:26:46 -0300 by cassio:
 gem "rubocop", "~> 0.52.1"
+# Added at 2018-02-19 23:36:22 -0300 by cassio:
+gem "bullet", "~> 5.7", :group => [:test]
