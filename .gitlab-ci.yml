@@ -65,11 +65,11 @@ rspec:
 
 
  build:
-   image: docker:latest
-   services:
+  image: docker:latest
+  services:
     - docker:dind
-   stage: build
-   script:
-     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
-     - docker build -t registry.gitlab.com/cassiopgodinho/ci-integrations-example .
-     - docker push registry.gitlab.com/cassiopgodinho/ci-integrations-example
+  stage: build
+  script:
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+    - docker build -t registry.gitlab.com/cassiopgodinho/ci-integrations-example .
+    - docker push registry.gitlab.com/cassiopgodinho/ci-integrations-example
