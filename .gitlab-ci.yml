@@ -63,16 +63,13 @@ rspec:
   script:
     - bundle exec rspec
 
-build:
-  stage: build
-  image: docker:latest
-  cache:
-    key: ${CI_COMMIT_REF_SLUG}
-    paths:
-      - vendor/ruby
-  only:
-    - master
-  services:
-    - docker:dind
-  script:
-    - docker build .
+
+ build:
+   image: docker:latest
+   services:
+   - docker:dind
+   stage: build
+   script:
+     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.gitlab.com
+     - docker build -t registry.gitlab.com/cassiopgodinho/ci-integrations-example .
+     - docker push registry.gitlab.com/cassiopgodinho/ci-integrations-example
