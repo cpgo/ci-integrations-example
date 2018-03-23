@@ -3,17 +3,17 @@ stages:
   - test
   - build
 
-cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - vendor/ruby
-
 bundler:
+  image: ruby:2.5
   stage: bundle_cache
   script:
     - ruby -v                                   # Print out ruby version for debugging
     - gem install bundler  --no-ri --no-rdoc    # Bundler is not installed with the image
     - bundle install -j $(nproc) --path vendor  # Install dependencies into ./vendor/ruby
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - vendor/ruby
 
 variables:
   DB_HOST: postgres
@@ -23,32 +23,43 @@ variables:
 brakeman:
   stage: test
   image: ruby:2.5
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - vendor/ruby
   before_script:
-    - bundle install
+    - bundle install -j $(nproc) --path vendor
   script:
     - bundle exec brakeman
 
 rubocop:
   stage: test
   image: ruby:2.5
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - vendor/ruby
   before_script:
-    - bundle install
+    - bundle install -j $(nproc) --path vendor
   script:
     - bundle exec rubocop
 
 rspec:
   stage: test
   image: ruby:2.5
+  cache:
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - vendor/ruby
   services:
     - postgres:latest
   before_script:
     - apt-get update -q && apt-get install nodejs -yqq
     - ruby -v
     - gem install bundler  --no-ri --no-rdoc
-    - bundle install -j $(nproc) 
+    - bundle install -j $(nproc) --path vendor 
     - rake db:create RAILS_ENV=test
     - rake db:schema:load RAILS_ENV=test
-
   script:
     - bundle exec rspec
 
