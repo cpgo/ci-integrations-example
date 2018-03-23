@@ -1,4 +1,5 @@
 stages:
+  - bundle_cache
   - test
   - build
 
@@ -7,10 +8,12 @@ cache:
   paths:
     - vendor/ruby
 
-before_script:
-  - ruby -v                                   # Print out ruby version for debugging
-  - gem install bundler  --no-ri --no-rdoc    # Bundler is not installed with the image
-  - bundle install -j $(nproc) --path vendor  # Install dependencies into ./vendor/ruby
+bundler:
+  stage: bundle_cache
+  script:
+    - ruby -v                                   # Print out ruby version for debugging
+    - gem install bundler  --no-ri --no-rdoc    # Bundler is not installed with the image
+    - bundle install -j $(nproc) --path vendor  # Install dependencies into ./vendor/ruby
 
 variables:
   DB_HOST: postgres
