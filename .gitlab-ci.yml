@@ -65,9 +65,13 @@ rspec:
 
 build:
   stage: build
+  image: docker:latest
+  cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - vendor/ruby
   only:
     - master
-  image: docker:latest
   services:
     - docker:dind
   script:
