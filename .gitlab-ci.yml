@@ -67,9 +67,9 @@ build:
   stage: build
   image: docker:latest
   cache:
-  key: ${CI_COMMIT_REF_SLUG}
-  paths:
-    - vendor/ruby
+    key: ${CI_COMMIT_REF_SLUG}
+    paths:
+      - vendor/ruby
   only:
     - master
   services:
