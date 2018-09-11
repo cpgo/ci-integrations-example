@@ -12,7 +12,7 @@ gem "jbuilder", "~> 2.5"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
-  gem "rspec-rails", "~> 3.7"
+  gem "rspec-rails", "~> 3.8"
   gem "rspec_junit_formatter"
   gem "bullet", "~> 5.7"
 end
