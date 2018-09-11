@@ -10,7 +10,8 @@ jobs:
           BUNDLE_RETRY: 3
           BUNDLE_PATH: vendor/bundle
           PGHOST: 127.0.0.1
-          PGUSER: circleci-demo-ruby
+          DB_USER: circleci-demo-ruby
+          DB_PASS: ""
           RAILS_ENV: test
       - image: circleci/postgres:9.5-alpine
         environment:
