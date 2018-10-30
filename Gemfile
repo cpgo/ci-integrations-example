@@ -14,7 +14,7 @@ group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails", "~> 3.8"
   gem "rspec_junit_formatter"
-  gem "bullet", "~> 5.7"
+  gem "bullet", "~> 5.8"
 end
 
 group :development do
