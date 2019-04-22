@@ -8,7 +8,7 @@ bundler:
   stage: bundle_cache
   script:
     - ruby -v                                   # Print out ruby version for debugging
-    - gem install bundler  --no-ri --no-rdoc    # Bundler is not installed with the image
+    - gem install bundler  --no-document    # Bundler is not installed with the image
     - bundle install -j $(nproc) --path vendor  # Install dependencies into ./vendor/ruby
   cache:
     key: ${CI_COMMIT_REF_SLUG}
@@ -56,10 +56,10 @@ rspec:
   before_script:
     - apt-get update -q && apt-get install nodejs -yqq
     - ruby -v
-    - gem install bundler  --no-ri --no-rdoc
+    - gem install bundler  --no-document
     - bundle install -j $(nproc) --path vendor 
-    - rake db:create RAILS_ENV=test
-    - rake db:schema:load RAILS_ENV=test
+    - bundle exec rake db:create RAILS_ENV=test
+    - bundle exec rake db:schema:load RAILS_ENV=test
   script:
     - bundle exec rspec
 
