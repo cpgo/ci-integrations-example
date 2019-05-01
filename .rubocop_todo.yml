@@ -41,7 +41,7 @@ Layout/EmptyLinesAroundBlockBody:
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle, IndentationWidth.
 # SupportedStyles: consistent, special_for_inner_method_call, special_for_inner_method_call_in_parentheses
-Layout/FirstParameterIndentation:
+Layout/IndentFirstArgument:
   Exclude:
     - 'spec/views/users/edit.html.erb_spec.rb'
     - 'spec/views/users/new.html.erb_spec.rb'
@@ -51,7 +51,7 @@ Layout/FirstParameterIndentation:
 # Cop supports --auto-correct.
 # Configuration parameters: IndentationWidth.
 # SupportedStyles: special_inside_parentheses, consistent, align_brackets
-Layout/IndentArray:
+Layout/IndentFirstArrayElement:
   EnforcedStyle: consistent
 
 # Offense count: 2
