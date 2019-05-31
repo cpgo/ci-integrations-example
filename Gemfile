@@ -23,5 +23,5 @@ group :development do
   gem "spring"
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "brakeman", "~> 4.5"
-  gem "rubocop", "~> 0.70"
+  gem "rubocop", "~> 0.71"
 end
