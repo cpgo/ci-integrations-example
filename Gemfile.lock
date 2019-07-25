@@ -45,7 +45,7 @@ GEM
     arel (9.0.0)
     ast (2.4.0)
     bindex (0.7.0)
-    brakeman (4.6.0)
+    brakeman (4.6.1)
     builder (3.2.3)
     bullet (6.0.1)
       activesupport (>= 3.0.0)
