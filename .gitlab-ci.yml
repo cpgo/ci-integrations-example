@@ -4,7 +4,7 @@ stages:
   - build
 
 bundler:
-  image: ruby:2.7.0
+  image: ruby:2.7.1
   stage: bundle_cache
   script:
     - ruby -v                                   # Print out ruby version for debugging
@@ -22,7 +22,7 @@ variables:
 
 brakeman:
   stage: test
-  image: ruby:2.7.0
+  image: ruby:2.7.1
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -34,7 +34,7 @@ brakeman:
 
 rubocop:
   stage: test
-  image: ruby:2.7.0
+  image: ruby:2.7.1
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:
@@ -46,7 +46,7 @@ rubocop:
 
 rspec:
   stage: test
-  image: ruby:2.7.0
+  image: ruby:2.7.1
   cache:
     key: ${CI_COMMIT_REF_SLUG}
     paths:

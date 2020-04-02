@@ -1,4 +1,4 @@
-FROM ruby:2.7.0-alpine3.7
+FROM ruby:2.7.1-alpine3.11
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
