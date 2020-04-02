@@ -52,7 +52,9 @@ rspec:
     paths:
       - vendor/ruby
   services:
-    - postgres:latest
+    - postgres:12.2-alpine
+  variables:
+    POSTGRES_PASSWORD: ""
   before_script:
     - apt-get update -q && apt-get install nodejs -yqq
     - ruby -v
