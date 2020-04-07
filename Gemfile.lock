@@ -45,7 +45,7 @@ GEM
     arel (9.0.0)
     ast (2.4.0)
     bindex (0.8.1)
-    brakeman (4.8.0)
+    brakeman (4.8.1)
     builder (3.2.4)
     bullet (6.1.0)
       activesupport (>= 3.0.0)
@@ -202,7 +202,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  brakeman (~> 4.7)
+  brakeman (~> 4.8)
   bullet (~> 6.0)
   byebug
   coffee-rails (~> 5.0)
